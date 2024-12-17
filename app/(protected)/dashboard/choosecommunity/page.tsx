@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { 
     Card, 
     CardContent, 
@@ -19,6 +20,7 @@ import {
 type CommunityMode = 'create' | 'join';
 
 const ChooseCommunity: React.FC = () => {
+    const router = useRouter();
     const [selectedMode, setSelectedMode] = useState<CommunityMode | null>(null);
 
     const communityOptions = [
@@ -28,7 +30,8 @@ const ChooseCommunity: React.FC = () => {
             description: 'Discover and become part of exciting communities',
             icon: Globe,
             gradient: 'gradient-text',
-            buttonText: 'Explore Communities'
+            buttonText: 'Explore Communities',
+            route: '/dashboard/joincommunity'
         },
         {
             mode: 'create' as CommunityMode,
@@ -36,14 +39,13 @@ const ChooseCommunity: React.FC = () => {
             description: 'Build and nurture your own unique community',
             icon: PlusCircle,
             gradient: 'gradient-text',
-            buttonText: 'Start a Community'
+            buttonText: 'Start a Community',
+            route: '/dashboard/createcommunity'
         }
     ];
 
-    const handleModeSelection = (mode: CommunityMode) => {
-        setSelectedMode(mode);
-        // You can add navigation or modal logic here
-        console.log(`Selected mode: ${mode}`);
+    const handleModeSelection = (route: string) => {
+        router.push(route);
     };
 
     return (
@@ -66,49 +68,49 @@ const ChooseCommunity: React.FC = () => {
                     >
                         <div className="absolute top-0 right-0 w-48 h-48 opacity-10"></div>
         
-            <div className="absolute top-0 right-0 w-48 h-48 opacity-10">
-              <option.icon 
-                className={`w-full h-full text-white`} 
-                strokeWidth={1} 
-              />
-            </div>
-            
-            <Card className="border-none shadow-none bg-transparent">
-              <CardHeader className="relative z-10 pb-0">
-                <div className="flex items-center space-x-4">
-                  <div className={`p-3 rounded-full bg-gradient-to-br ${option.gradient} text-white`}>
-                    <option.icon className="w-8 h-8" />
-                  </div>
-                  <CardTitle className="text-2xl font-bold">{option.title}</CardTitle>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="relative z-10 pt-4 space-y-6">
-                <CardDescription className="text-gray-700">
-                  {option.description}
-                </CardDescription>
-                
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className={`w-full flex items-center justify-between group 
-                    border-2 border-transparent 
-                    hover:border-primary 
-                    ${option.gradient} hover:bg-opacity-10`}
-                  onClick={() => handleModeSelection(option.mode)}
-                >
-                  {option.buttonText}
-                  <ArrowRight 
-                    className="ml-2 group-hover:translate-x-1 transition-transform" 
-                  />
-                </Button>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  );
+                        <div className="absolute top-0 right-0 w-48 h-48 opacity-10">
+                            <option.icon 
+                                className={`w-full h-full text-white`} 
+                                strokeWidth={1} 
+                            />
+                        </div>
+                        
+                        <Card className="border-none shadow-none bg-transparent">
+                            <CardHeader className="relative z-10 pb-0">
+                                <div className="flex items-center space-x-4">
+                                    <div className={`p-3 rounded-full bg-gradient-to-br ${option.gradient} text-white`}>
+                                        <option.icon className="w-8 h-8" />
+                                    </div>
+                                    <CardTitle className="text-2xl font-bold">{option.title}</CardTitle>
+                                </div>
+                            </CardHeader>
+                            
+                            <CardContent className="relative z-10 pt-4 space-y-6">
+                                <CardDescription className="text-gray-700">
+                                    {option.description}
+                                </CardDescription>
+                                
+                                <Button 
+                                    variant="outline" 
+                                    size="lg" 
+                                    className={`w-full flex items-center justify-between group 
+                                        border-2 border-transparent 
+                                        hover:border-primary 
+                                        ${option.gradient} hover:bg-opacity-10`}
+                                    onClick={() => handleModeSelection(option.route)}
+                                >
+                                    {option.buttonText}
+                                    <ArrowRight 
+                                        className="ml-2 group-hover:translate-x-1 transition-transform" 
+                                    />
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                ))}
+            </motion.div>
+        </div>
+    );
 };
 
 export default ChooseCommunity;

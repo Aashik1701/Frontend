@@ -59,12 +59,12 @@ const sidebarNavItems = [
   },
   {
     title: "Community",
-    href: "/dashboard/community",
+    href: "/dashboard/choosecommunity",
     icon: MessageSquare,
   },
   {
-    title: "Documents",
-    href: "/dashboard/documents",
+    title: "Market Place",
+    href: "/dashboard/marketplace",
     icon: FileText,
   },
   {

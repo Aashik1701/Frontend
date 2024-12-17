@@ -6,25 +6,25 @@ import { Wallet, Users, ArrowUpRight, Coins } from "lucide-react";
 const stats = [
   {
     title: "Total Balance",
-    value: "2.5 ETH",
+    value: "0.00 ETH",
     change: "+20%",
     icon: Wallet,
   },
   {
     title: "Active Members",
-    value: "2,345",
+    value: "5",
     change: "+15%",
     icon: Users,
   },
   {
     title: "Total Loans",
-    value: "12.8 ETH",
+    value: "0.00 ETH",
     change: "+10%",
     icon: Coins,
   },
   {
     title: "Governance Power",
-    value: "8,234",
+    value: "8",
     change: "+25%",
     icon: ArrowUpRight,
   },
